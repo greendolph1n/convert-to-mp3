@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "convertToMp3", "convertToMp3\convertToMp3.csproj", "{29980320-C06A-49E5-A3DF-2E5F13C25A1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29980320-C06A-49E5-A3DF-2E5F13C25A1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29980320-C06A-49E5-A3DF-2E5F13C25A1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29980320-C06A-49E5-A3DF-2E5F13C25A1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29980320-C06A-49E5-A3DF-2E5F13C25A1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F7257FA-52D1-4BB8-8773-44EB78DB19AF}
+	EndGlobalSection
+EndGlobal
