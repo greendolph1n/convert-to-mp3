@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace convertToMp3
 {
-    public partial class UserControl1 : UserControl
+    public partial class Converter : UserControl
     {
-        public UserControl1()
+        public Converter()
         {
             InitializeComponent();
+        }
+
+        private void Converter_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

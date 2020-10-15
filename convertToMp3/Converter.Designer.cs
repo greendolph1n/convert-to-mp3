@@ -1,6 +1,6 @@
 ﻿namespace convertToMp3
 {
-    partial class UserControl1
+    partial class Converter
     {
         /// <summary> 
         /// Required designer variable.
@@ -61,15 +61,16 @@
             this.ConvertButton.Text = "Convert";
             this.ConvertButton.UseVisualStyleBackColor = false;
             // 
-            // UserControl1
+            // Converter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ConvertButton);
             this.Controls.Add(this.URLbox);
             this.Controls.Add(this.label1);
-            this.Name = "UserControl1";
+            this.Name = "Converter";
             this.Size = new System.Drawing.Size(2170, 1230);
+            this.Load += new System.EventHandler(this.Converter_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -19,9 +19,9 @@ namespace convertToMp3
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            userControl11.Hide();
-            userControl21.Hide();
-            userControl31.Hide();
+            Converter.Hide();
+            Directory.Hide();
+            ErrorNoDir.Hide();
 
         }
 
@@ -32,34 +32,39 @@ namespace convertToMp3
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            bool check = userControl21.hasUserEnteredDir();
+            bool check = Directory.hasUserEnteredDir();
 
             if (check) {
-                userControl11.Show();
-                userControl21.Hide();
-                userControl31.Hide();
+                Converter.Show();
+                Directory.Hide();
+                ErrorNoDir.Hide();
             }
 
             else
             {
-                userControl11.Hide();
-                userControl21.Hide();
-                userControl31.Show();
+                Converter.Hide();
+                Directory.Hide();
+                ErrorNoDir.Show();
             }
         }
 
         private void DirectoryButton_Click(object sender, EventArgs e)
         {
-            userControl11.Hide();
-            userControl21.Show();
-            userControl31.Hide();
+            Converter.Hide();
+            Directory.Show();
+            ErrorNoDir.Hide();
         }
 
         private void PlaylistButton_Click(object sender, EventArgs e)
         {
-            userControl11.Hide();
-            userControl21.Hide();
-            userControl31.Hide();
+            Converter.Hide();
+            Directory.Hide();
+            ErrorNoDir.Hide();
+
+        }
+
+        private void ErrorNoDir_Load(object sender, EventArgs e)
+        {
 
         }
     }

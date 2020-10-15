@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace convertToMp3
 {
-    public partial class UserControl3 : UserControl
+    public partial class ErrorNoDir : UserControl
     {
-        public UserControl3()
+        public ErrorNoDir()
         {
             InitializeComponent();
+        }
+
+        private void ErrorNoDir_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

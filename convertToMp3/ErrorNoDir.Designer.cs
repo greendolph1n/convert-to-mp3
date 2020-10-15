@@ -1,6 +1,6 @@
 ﻿namespace convertToMp3
 {
-    partial class UserControl3
+    partial class ErrorNoDir
     {
         /// <summary> 
         /// Required designer variable.
@@ -43,13 +43,14 @@
             this.noDirectory.TabIndex = 0;
             this.noDirectory.Text = "ERROR: You have not specified a directory";
             // 
-            // UserControl3
+            // ErrorNoDir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.noDirectory);
-            this.Name = "UserControl3";
+            this.Name = "ErrorNoDir";
             this.Size = new System.Drawing.Size(2160, 1227);
+            this.Load += new System.EventHandler(this.ErrorNoDir_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

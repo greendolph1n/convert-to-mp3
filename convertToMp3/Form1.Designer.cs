@@ -33,9 +33,9 @@
             this.directoryButton = new System.Windows.Forms.Button();
             this.playlistButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
-            this.userControl11 = new convertToMp3.UserControl1();
-            this.userControl21 = new convertToMp3.UserControl2();
-            this.userControl31 = new convertToMp3.UserControl3();
+            this.Converter = new convertToMp3.Converter();
+            this.Directory = new convertToMp3.Directory();
+            this.ErrorNoDir = new convertToMp3.ErrorNoDir();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,26 +97,27 @@
             this.startButton.UseVisualStyleBackColor = false;
             this.startButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
-            // userControl11
+            // Converter
             // 
-            this.userControl11.Location = new System.Drawing.Point(-21, 401);
-            this.userControl11.Name = "userControl11";
-            this.userControl11.Size = new System.Drawing.Size(2170, 1230);
-            this.userControl11.TabIndex = 2;
+            this.Converter.Location = new System.Drawing.Point(-21, 401);
+            this.Converter.Name = "Converter";
+            this.Converter.Size = new System.Drawing.Size(2170, 1230);
+            this.Converter.TabIndex = 2;
             // 
-            // userControl21
+            // Directory
             // 
-            this.userControl21.Location = new System.Drawing.Point(-33, 437);
-            this.userControl21.Name = "userControl21";
-            this.userControl21.Size = new System.Drawing.Size(2172, 1194);
-            this.userControl21.TabIndex = 3;
+            this.Directory.Location = new System.Drawing.Point(-33, 437);
+            this.Directory.Name = "Directory";
+            this.Directory.Size = new System.Drawing.Size(2172, 1194);
+            this.Directory.TabIndex = 3;
             // 
-            // userControl31
+            // ErrorNoDir
             // 
-            this.userControl31.Location = new System.Drawing.Point(-11, 404);
-            this.userControl31.Name = "userControl31";
-            this.userControl31.Size = new System.Drawing.Size(2160, 1227);
-            this.userControl31.TabIndex = 4;
+            this.ErrorNoDir.Location = new System.Drawing.Point(-11, 404);
+            this.ErrorNoDir.Name = "ErrorNoDir";
+            this.ErrorNoDir.Size = new System.Drawing.Size(2160, 1227);
+            this.ErrorNoDir.TabIndex = 4;
+            this.ErrorNoDir.Load += new System.EventHandler(this.ErrorNoDir_Load);
             // 
             // Form1
             // 
@@ -124,9 +125,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(2124, 1265);
-            this.Controls.Add(this.userControl31);
-            this.Controls.Add(this.userControl21);
-            this.Controls.Add(this.userControl11);
+            this.Controls.Add(this.ErrorNoDir);
+            this.Controls.Add(this.Directory);
+            this.Controls.Add(this.Converter);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -145,9 +146,9 @@
         private System.Windows.Forms.Button directoryButton;
         private System.Windows.Forms.Button playlistButton;
         private System.Windows.Forms.Button startButton;
-        private UserControl1 userControl11;
-        private UserControl2 userControl21;
-        private UserControl3 userControl31;
+        private Converter Converter;
+        private Directory Directory;
+        private ErrorNoDir ErrorNoDir;
     }
 }
 

@@ -11,11 +11,11 @@ using System.IO;
 
 namespace convertToMp3
 {
-    public partial class UserControl2 : UserControl
+    public partial class Directory : UserControl
     {
 
         static bool check = false;
-        public UserControl2()
+        public Directory()
         {
             InitializeComponent();
         }
@@ -30,7 +30,7 @@ namespace convertToMp3
             FolderBrowserDialog FBD = new FolderBrowserDialog();
             if (FBD.ShowDialog ()== DialogResult.OK)
             {
-                textBox1.Text = Directory.GetCurrentDirectory();
+                textBox1.Text = System.IO.Directory.GetCurrentDirectory();
             }
         }
 

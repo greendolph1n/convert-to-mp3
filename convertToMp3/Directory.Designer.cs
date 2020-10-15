@@ -1,6 +1,6 @@
 ﻿namespace convertToMp3
 {
-    partial class UserControl2
+    partial class Directory
     {
         /// <summary> 
         /// Required designer variable.
