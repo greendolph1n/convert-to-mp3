@@ -21,7 +21,7 @@ namespace convertToMp3
         {
             Converter.Hide();
             Directory.Hide();
-            ErrorNoDir.Hide();
+    
 
         }
 
@@ -38,14 +38,15 @@ namespace convertToMp3
             if (check) {
                 Converter.Show();
                 Directory.Hide();
-                ErrorNoDir.Hide();
+        
             }
 
             else
             {
                 Converter.Hide();
                 Directory.Hide();
-                ErrorNoDir.Show();
+
+                MessageBox.Show("You have not specified a directory", "Error");
             }
         }
 
@@ -53,14 +54,13 @@ namespace convertToMp3
         {
             Converter.Hide();
             Directory.Show();
-            ErrorNoDir.Hide();
+     
         }
 
         private void PlaylistButton_Click(object sender, EventArgs e)
         {
             Converter.Hide();
             Directory.Hide();
-            ErrorNoDir.Hide();
 
         }
 

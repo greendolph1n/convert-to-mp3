@@ -35,7 +35,6 @@
             this.startButton = new System.Windows.Forms.Button();
             this.Converter = new convertToMp3.Converter();
             this.Directory = new convertToMp3.Directory();
-            this.ErrorNoDir = new convertToMp3.ErrorNoDir();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,14 +109,7 @@
             this.Directory.Name = "Directory";
             this.Directory.Size = new System.Drawing.Size(2172, 1194);
             this.Directory.TabIndex = 3;
-            // 
-            // ErrorNoDir
-            // 
-            this.ErrorNoDir.Location = new System.Drawing.Point(-11, 404);
-            this.ErrorNoDir.Name = "ErrorNoDir";
-            this.ErrorNoDir.Size = new System.Drawing.Size(2160, 1227);
-            this.ErrorNoDir.TabIndex = 4;
-            this.ErrorNoDir.Load += new System.EventHandler(this.ErrorNoDir_Load);
+      
             // 
             // Form1
             // 
@@ -125,7 +117,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(2124, 1265);
-            this.Controls.Add(this.ErrorNoDir);
             this.Controls.Add(this.Directory);
             this.Controls.Add(this.Converter);
             this.Controls.Add(this.panel1);
@@ -148,7 +139,6 @@
         private System.Windows.Forms.Button startButton;
         private Converter Converter;
         private Directory Directory;
-        private ErrorNoDir ErrorNoDir;
     }
 }
 
