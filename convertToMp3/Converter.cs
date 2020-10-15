@@ -16,6 +16,8 @@ namespace convertToMp3
     public partial class Converter : UserControl
     {
      
+
+        static string directory;
         public Converter()
         {
             InitializeComponent();
@@ -29,15 +31,22 @@ namespace convertToMp3
         private void ConvertButton_Click(object sender, EventArgs e)
         {
 
-            string dir = new Directory().getDir();
             string url = URLbox.Text;
+            MessageBox.Show("current directory is"+  directory);
             YoutubeConverter converter = new YoutubeConverter();
-            converter.convertURL(url, dir);
+            converter.convertURL(url, directory);
+        }
+
+        public void getDir(string dir)
+        {
+             directory = dir.ToString();
         }
 
         private void URLbox_TextChanged(object sender, EventArgs e)
         {
 
         }
+
+    
     }
 }

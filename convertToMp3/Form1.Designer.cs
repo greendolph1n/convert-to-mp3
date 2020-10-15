@@ -33,8 +33,8 @@
             this.directoryButton = new System.Windows.Forms.Button();
             this.playlistButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
-            this.Converter = new convertToMp3.Converter();
             this.Directory = new convertToMp3.Directory();
+            this.Converter = new convertToMp3.Converter();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,22 +51,22 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Desktop;
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel1.Controls.Add(this.directoryButton);
-            this.panel1.Controls.Add(this.playlistButton);
             this.panel1.Controls.Add(this.startButton);
-            this.panel1.Location = new System.Drawing.Point(53, 211);
+            this.panel1.Controls.Add(this.playlistButton);
+            this.panel1.Location = new System.Drawing.Point(58, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1934, 171);
+            this.panel1.Size = new System.Drawing.Size(368, 818);
             this.panel1.TabIndex = 1;
             // 
             // directoryButton
             // 
-            this.directoryButton.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.directoryButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.directoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.directoryButton.Location = new System.Drawing.Point(1476, 3);
+            this.directoryButton.Location = new System.Drawing.Point(41, 586);
             this.directoryButton.Name = "directoryButton";
-            this.directoryButton.Size = new System.Drawing.Size(287, 165);
+            this.directoryButton.Size = new System.Drawing.Size(279, 156);
             this.directoryButton.TabIndex = 2;
             this.directoryButton.Text = "Choose Directory";
             this.directoryButton.UseVisualStyleBackColor = false;
@@ -74,9 +74,9 @@
             // 
             // playlistButton
             // 
-            this.playlistButton.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.playlistButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.playlistButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.playlistButton.Location = new System.Drawing.Point(811, 3);
+            this.playlistButton.Location = new System.Drawing.Point(41, 298);
             this.playlistButton.Name = "playlistButton";
             this.playlistButton.Size = new System.Drawing.Size(271, 165);
             this.playlistButton.TabIndex = 1;
@@ -86,9 +86,9 @@
             // 
             // startButton
             // 
-            this.startButton.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.startButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.startButton.Location = new System.Drawing.Point(171, 3);
+            this.startButton.Location = new System.Drawing.Point(40, 31);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(272, 165);
             this.startButton.TabIndex = 0;
@@ -96,20 +96,19 @@
             this.startButton.UseVisualStyleBackColor = false;
             this.startButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
-            // Converter
-            // 
-            this.Converter.Location = new System.Drawing.Point(-21, 401);
-            this.Converter.Name = "Converter";
-            this.Converter.Size = new System.Drawing.Size(2170, 1230);
-            this.Converter.TabIndex = 2;
-            // 
             // Directory
             // 
-            this.Directory.Location = new System.Drawing.Point(-33, 437);
+            this.Directory.Location = new System.Drawing.Point(428, 150);
             this.Directory.Name = "Directory";
             this.Directory.Size = new System.Drawing.Size(2172, 1194);
             this.Directory.TabIndex = 3;
-      
+            // 
+            // Converter
+            // 
+            this.Converter.Location = new System.Drawing.Point(432, 150);
+            this.Converter.Name = "Converter";
+            this.Converter.Size = new System.Drawing.Size(2170, 1230);
+            this.Converter.TabIndex = 2;
             // 
             // Form1
             // 

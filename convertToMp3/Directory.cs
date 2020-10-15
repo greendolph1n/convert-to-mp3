@@ -53,6 +53,10 @@ namespace convertToMp3
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
             check = true;
+            string dir = textBox1.Text;
+            Converter conv = new Converter();
+            conv.getDir(dir);
+
         }
     }
 }
