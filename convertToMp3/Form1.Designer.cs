@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.directoryButton = new System.Windows.Forms.Button();
-            this.playlistButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
+            this.playlistButton = new System.Windows.Forms.Button();
             this.Directory = new convertToMp3.Directory();
             this.Converter = new convertToMp3.Converter();
+            this.Info = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,16 +57,16 @@
             this.panel1.Controls.Add(this.directoryButton);
             this.panel1.Controls.Add(this.startButton);
             this.panel1.Controls.Add(this.playlistButton);
-            this.panel1.Location = new System.Drawing.Point(58, 34);
+            this.panel1.Location = new System.Drawing.Point(81, 73);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(368, 818);
+            this.panel1.Size = new System.Drawing.Size(309, 769);
             this.panel1.TabIndex = 1;
             // 
             // directoryButton
             // 
             this.directoryButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.directoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.directoryButton.Location = new System.Drawing.Point(41, 586);
+            this.directoryButton.Location = new System.Drawing.Point(13, 583);
             this.directoryButton.Name = "directoryButton";
             this.directoryButton.Size = new System.Drawing.Size(279, 156);
             this.directoryButton.TabIndex = 2;
@@ -72,23 +74,11 @@
             this.directoryButton.UseVisualStyleBackColor = false;
             this.directoryButton.Click += new System.EventHandler(this.DirectoryButton_Click);
             // 
-            // playlistButton
-            // 
-            this.playlistButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.playlistButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.playlistButton.Location = new System.Drawing.Point(41, 298);
-            this.playlistButton.Name = "playlistButton";
-            this.playlistButton.Size = new System.Drawing.Size(271, 165);
-            this.playlistButton.TabIndex = 1;
-            this.playlistButton.Text = " Convert a Playlist";
-            this.playlistButton.UseVisualStyleBackColor = false;
-            this.playlistButton.Click += new System.EventHandler(this.PlaylistButton_Click);
-            // 
             // startButton
             // 
             this.startButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.startButton.Location = new System.Drawing.Point(40, 31);
+            this.startButton.Location = new System.Drawing.Point(20, 29);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(272, 165);
             this.startButton.TabIndex = 0;
@@ -96,19 +86,43 @@
             this.startButton.UseVisualStyleBackColor = false;
             this.startButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
+            // playlistButton
+            // 
+            this.playlistButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.playlistButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.playlistButton.Location = new System.Drawing.Point(20, 296);
+            this.playlistButton.Name = "playlistButton";
+            this.playlistButton.Size = new System.Drawing.Size(271, 165);
+            this.playlistButton.TabIndex = 1;
+            this.playlistButton.Text = " Convert a Playlist";
+            this.playlistButton.UseVisualStyleBackColor = false;
+            this.playlistButton.Click += new System.EventHandler(this.PlaylistButton_Click);
+            // 
             // Directory
             // 
-            this.Directory.Location = new System.Drawing.Point(428, 150);
+            this.Directory.Location = new System.Drawing.Point(415, 389);
             this.Directory.Name = "Directory";
             this.Directory.Size = new System.Drawing.Size(2172, 1194);
             this.Directory.TabIndex = 3;
             // 
             // Converter
             // 
-            this.Converter.Location = new System.Drawing.Point(432, 150);
+            this.Converter.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Converter.Location = new System.Drawing.Point(396, 389);
             this.Converter.Name = "Converter";
             this.Converter.Size = new System.Drawing.Size(2170, 1230);
             this.Converter.TabIndex = 2;
+            this.Converter.Load += new System.EventHandler(this.Converter_Load);
+            // 
+            // Info
+            // 
+            this.Info.AutoSize = true;
+            this.Info.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.Info.Location = new System.Drawing.Point(421, 196);
+            this.Info.Name = "Info";
+            this.Info.Size = new System.Drawing.Size(1601, 210);
+            this.Info.TabIndex = 4;
+            this.Info.Text = resources.GetString("Info.Text");
             // 
             // Form1
             // 
@@ -116,10 +130,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(2124, 1265);
-            this.Controls.Add(this.Directory);
+            this.Controls.Add(this.Info);
             this.Controls.Add(this.Converter);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.Directory);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -138,6 +153,7 @@
         private System.Windows.Forms.Button startButton;
         private Converter Converter;
         private Directory Directory;
+        private System.Windows.Forms.Label Info;
     }
 }
 

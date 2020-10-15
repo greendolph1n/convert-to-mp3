@@ -44,19 +44,21 @@ namespace convertToMp3
             return check;
         }
 
-        public string getDir()
-        {
-           string dir = textBox1.Text;
-            return dir;
-           
-        }
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            check = true;
-            string dir = textBox1.Text;
-            Converter conv = new Converter();
-            conv.getDir(dir);
+            
+            if (textBox1.Text == "")
+            {
+                MessageBox.Show("You haven't entered a directory", "Error");
+            }
 
+            else
+            {
+                string dir = textBox1.Text;
+                Converter conv = new Converter();
+                conv.getDir(dir);
+                check = true;
+            }
         }
     }
 }

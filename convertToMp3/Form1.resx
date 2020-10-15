@@ -117,4 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Info.Text" xml:space="preserve">
+    <value>Welcome to a simple Youtube to MP3 Converter. You can either convert a single youtube video,
+ or convert a whole playlist of videos.
+
+ Before converting any videos, be sure to add and confirm a directory where you want your files
+ to be saved in under  'Choose Directory.
+</value>
+  </data>
 </root>

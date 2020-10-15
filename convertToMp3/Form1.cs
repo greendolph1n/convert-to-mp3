@@ -12,9 +12,12 @@ namespace convertToMp3
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
+
+            this.Text = "Youtube to MP3 Converter";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -65,6 +68,16 @@ namespace convertToMp3
         }
 
         private void ErrorNoDir_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void Converter_Load(object sender, EventArgs e)
         {
 
         }

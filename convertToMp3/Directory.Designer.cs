@@ -37,16 +37,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label1.Location = new System.Drawing.Point(111, 75);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.5F);
+            this.label1.Location = new System.Drawing.Point(22, 62);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1142, 52);
+            this.label1.Size = new System.Drawing.Size(1091, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "Select the directory you want the MP3 file to be saved into";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(130, 189);
+            this.textBox1.Location = new System.Drawing.Point(31, 189);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(1330, 38);
             this.textBox1.TabIndex = 1;
@@ -54,9 +54,9 @@
             // 
             // ChooseDir
             // 
-            this.ChooseDir.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ChooseDir.BackColor = System.Drawing.Color.LightGray;
             this.ChooseDir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.ChooseDir.Location = new System.Drawing.Point(1487, 158);
+            this.ChooseDir.Location = new System.Drawing.Point(1389, 158);
             this.ChooseDir.Name = "ChooseDir";
             this.ChooseDir.Size = new System.Drawing.Size(205, 96);
             this.ChooseDir.TabIndex = 2;
@@ -66,9 +66,9 @@
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ConfirmButton.BackColor = System.Drawing.Color.LightGray;
             this.ConfirmButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.ConfirmButton.Location = new System.Drawing.Point(141, 351);
+            this.ConfirmButton.Location = new System.Drawing.Point(31, 340);
             this.ConfirmButton.Name = "ConfirmButton";
             this.ConfirmButton.Size = new System.Drawing.Size(1346, 150);
             this.ConfirmButton.TabIndex = 3;
@@ -76,7 +76,7 @@
             this.ConfirmButton.UseVisualStyleBackColor = false;
             this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
-            // UserControl2
+            // Directory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -84,7 +84,7 @@
             this.Controls.Add(this.ChooseDir);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Name = "UserControl2";
+            this.Name = "Directory";
             this.Size = new System.Drawing.Size(2172, 1194);
             this.Load += new System.EventHandler(this.UserControl2_Load);
             this.ResumeLayout(false);

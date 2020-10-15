@@ -12,12 +12,17 @@ using System.Windows.Forms;
 
 namespace convertToMp3
 {
-    class YoutubeConverter
+     class YoutubeConverter
     {
+      
+
 
         public void convertURL(string link, string dir)
         {
             {
+
+                Converter conv = new Converter();
+             
                 string source = dir;
                 var youtube = YouTube.Default;
                 var vid = youtube.GetVideo(link);
@@ -36,14 +41,18 @@ namespace convertToMp3
 
                     engine.Convert(inputFile, outputFile);
                 }
+              
+
 
 
                 File.Delete(Path.Combine(source, vid.FullName));
+               // MessageBox.Show(name + " has been downloaded!", "Success");
 
             }
 
 
         }
+
 
    
     }
