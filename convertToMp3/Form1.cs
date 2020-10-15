@@ -34,6 +34,7 @@ namespace convertToMp3
         {
             bool check = Directory.hasUserEnteredDir();
 
+
             if (check) {
                 Converter.Show();
                 Directory.Hide();

@@ -30,7 +30,7 @@ namespace convertToMp3
             FolderBrowserDialog FBD = new FolderBrowserDialog();
             if (FBD.ShowDialog ()== DialogResult.OK)
             {
-                textBox1.Text = System.IO.Directory.GetCurrentDirectory();
+                textBox1.Text = FBD.SelectedPath;
             }
         }
 
@@ -44,6 +44,12 @@ namespace convertToMp3
             return check;
         }
 
+        public string getDir()
+        {
+           string dir = textBox1.Text;
+            return dir;
+           
+        }
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
             check = true;

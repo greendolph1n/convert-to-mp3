@@ -49,6 +49,7 @@
             this.URLbox.Name = "URLbox";
             this.URLbox.Size = new System.Drawing.Size(1637, 38);
             this.URLbox.TabIndex = 1;
+            this.URLbox.TextChanged += new System.EventHandler(this.URLbox_TextChanged);
             // 
             // ConvertButton
             // 
@@ -60,6 +61,7 @@
             this.ConvertButton.TabIndex = 2;
             this.ConvertButton.Text = "Convert";
             this.ConvertButton.UseVisualStyleBackColor = false;
+            this.ConvertButton.Click += new System.EventHandler(this.ConvertButton_Click);
             // 
             // Converter
             // 
