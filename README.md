@@ -1,5 +1,5 @@
 <h1> A basic YouTube to MP3 Converter</h1>
-<p> This is a Windows Desktop application that will either take a YouTube URL or a YouTube Playlist URL. The application either downloads the seperate video 
+<p> This is a Windows Desktop application that will either take in a YouTube URL or a YouTube Playlist URL. The application downloads the seperate video 
 or downloads the whole playlist of videos as MP3 files.
 
 Here's a preview
