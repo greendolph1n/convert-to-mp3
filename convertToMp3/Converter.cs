@@ -21,6 +21,7 @@ namespace convertToMp3
 
         static string directory,url,songName;
         static int status;
+        static bool valid;
         public Converter()
         {
             InitializeComponent();
@@ -37,11 +38,20 @@ namespace convertToMp3
         {
 
             url = URLbox.Text;
-           songName= getYoutubeName(url);
-            backgroundWorker1.RunWorkerAsync();
-            status = 1;
-            ConvertTimer.Start();
-            ConvertProgressBar.Value = 0;
+            if (url.Contains("youtube"))
+            {
+                valid = true;
+                songName = getYoutubeName(url);
+                backgroundWorker1.RunWorkerAsync();
+                status = 1;
+                ConvertTimer.Start();
+                ConvertProgressBar.Value = 0;
+            }
+            else
+            {
+                valid = false;
+                MessageBox.Show("Please enter a valid URL","Error");
+            }
 
            
         }
@@ -61,11 +71,24 @@ namespace convertToMp3
         public string getYoutubeName(string url)
 
         {
-            var youtube = YouTube.Default;
-            var vid = youtube.GetVideo(url);
-            string name = vid.FullName;
-            name = name.Remove(name.Length - 4);
-            return name;
+            while (true)
+            {
+                try
+                {
+                    var youtube = YouTube.Default;
+                    var vid = youtube.GetVideo(url);
+                    string name = vid.FullName;
+                    name = name.Remove(name.Length - 4);
+                    return name;
+                }
+
+                catch (InvalidOperationException e)
+                {
+                    Console.WriteLine("Failed to retrieve video for main thread! trying again...");
+                    continue;
+                }
+
+            }
         }
 
     
@@ -101,7 +124,7 @@ namespace convertToMp3
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             status = 50;
-            DownloadedSong.Text = (songName+" has been successfully downloaded");
+            DownloadedSong.Text = ("Successfully downloaded:" + "\n\n- " + songName);
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

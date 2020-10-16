@@ -42,7 +42,7 @@
             // 
             this.DownloadedSong.AutoSize = true;
             this.DownloadedSong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.DownloadedSong.Location = new System.Drawing.Point(34, 471);
+            this.DownloadedSong.Location = new System.Drawing.Point(3, 463);
             this.DownloadedSong.Name = "DownloadedSong";
             this.DownloadedSong.Size = new System.Drawing.Size(0, 39);
             this.DownloadedSong.TabIndex = 9;

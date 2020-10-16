@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 using System.Net.Http;
-using MediaToolkit;
-using MediaToolkit.Model;
 using VideoLibrary;
 
 
@@ -19,6 +13,7 @@ namespace convertToMp3
     {
         static string directory, playlistURL, songName;
         static int status;
+        static bool valid;
         public PlaylistConverter()
         {
             InitializeComponent();
@@ -53,19 +48,27 @@ namespace convertToMp3
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-
             playlistURL = PlaylistInput.Text;
-            string[] youtubeURLs = ExtractLinkPlaylist(playlistURL);
-            for (int i = 0; i < youtubeURLs.Length; i++)
+            if (playlistURL.Contains("youtube") && playlistURL.Contains("list="))
             {
-                status = 1;
-                YoutubeConverter yc = new YoutubeConverter();
-                yc.convertURL(youtubeURLs[i], directory);
-                songName = getYoutubeName(youtubeURLs[i]);
-                backgroundWorker1.ReportProgress(0);
-                System.Threading.Thread.Sleep(5000);
-                Console.WriteLine("waiting....");
+                valid = true;
+                string[] youtubeURLs = ExtractLinkPlaylist(playlistURL);
+                for (int i = 0; i < youtubeURLs.Length; i++)
+                {
 
+                    status = 1;
+                    YoutubeConverter yc = new YoutubeConverter();
+                    yc.convertURL(youtubeURLs[i], directory);
+                    songName = getYoutubeName(youtubeURLs[i]);
+                    backgroundWorker1.ReportProgress(0);
+
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid playlist URL","Error");
+                valid = false;
             }
         }
 
@@ -73,15 +76,23 @@ namespace convertToMp3
         {
             status = 100;
          
-            DownloadedSong.Text = (songName + " has been successfully downloaded");
+            DownloadedSong.Text = ("Successfully downloaded:"+"\n\n- " +songName );
             ConvertProgressBar.Value = 0;
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            ConvertProgressBar.Value = 100;
-          //  DownloadedSong.Text = "Completed downloading all songs";
-           status = 0;
+            if (valid)
+            {
+                ConvertProgressBar.Value = 100;
+                //  DownloadedSong.Text = "Completed downloading all songs";
+                status = 0;
+                MessageBox.Show("The playlist has finished downloading");
+            }
+            else
+            {
+
+            }
         }
 
         private void ConvertProgressBar_Click(object sender, EventArgs e)
@@ -95,16 +106,29 @@ namespace convertToMp3
             directory = dir.ToString();
         }
 
-       
+
 
         public string getYoutubeName(string url)
 
         {
-            var youtube = YouTube.Default;
-            var vid = youtube.GetVideo(url);
-            string name = vid.FullName;
-            name = name.Remove(name.Length - 4);
-            return name;
+            while (true)
+            {
+                try
+                {
+                    var youtube = YouTube.Default;
+                    var vid = youtube.GetVideo(url);
+                    string name = vid.FullName;
+                    name = name.Remove(name.Length - 4);
+                    return name;
+                }
+
+                catch (InvalidOperationException e)
+                {
+                    Console.WriteLine("Failed to retrieve video for main thread! trying again...");
+                    continue;
+                }
+
+            }
         }
 
         public string[] ExtractLinkPlaylist(string html)
@@ -148,7 +172,7 @@ namespace convertToMp3
                     Console.WriteLine("string is " + stringURL + " string length is " + stringURL.Length);
                     if (stringURL.Length > 35) //string URL will only ever be 83 characters long
                     {
-                        Console.WriteLine("we are done");
+                        Console.WriteLine("Finished Extracting");
                         break;
                     }
 
@@ -157,14 +181,14 @@ namespace convertToMp3
                     total = index2 + 1;
                     if (total > pageSourceStr.Length)
                     {
-                        Console.WriteLine("total is too big");
+                       /// Console.WriteLine("total is too big");
                         break;
                     }
                 }
                 String[] str = list.ToArray();
 
-                Console.WriteLine("LENGTH OF LIST IS " + str.Length);
-                Console.ReadLine();
+               // Console.WriteLine("LENGTH OF LIST IS " + str.Length);
+              
                 return str;
             }
             return null;
