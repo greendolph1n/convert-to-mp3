@@ -24,6 +24,7 @@ namespace convertToMp3
         {
             Converter.Hide();
             Directory.Hide();
+            playlistConverter1.Hide();
     
 
         }
@@ -41,14 +42,15 @@ namespace convertToMp3
             if (check) {
                 Converter.Show();
                 Directory.Hide();
-        
+                playlistConverter1.Hide();
+
             }
 
             else
             {
                 Converter.Hide();
                 Directory.Hide();
-
+                playlistConverter1.Hide();
                 MessageBox.Show("You have not specified a directory", "Error");
             }
         }
@@ -57,15 +59,31 @@ namespace convertToMp3
         {
             Converter.Hide();
             Directory.Show();
-     
+            playlistConverter1.Hide();
+
         }
 
         private void PlaylistButton_Click(object sender, EventArgs e)
         {
-            Converter.Hide();
-            Directory.Hide();
+            bool check = Directory.hasUserEnteredDir();
+            if (check)
+            {
+                Converter.Hide();
+                Directory.Hide();
+                playlistConverter1.Show();
 
+            }
+
+            else
+            {
+                Converter.Hide();
+                Directory.Hide();
+                playlistConverter1.Hide();
+                MessageBox.Show("You have not specified a directory", "Error");
+            }
         }
+
+    
 
         private void ErrorNoDir_Load(object sender, EventArgs e)
         {
@@ -78,6 +96,11 @@ namespace convertToMp3
         }
 
         private void Converter_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void playlistConverter1_Load(object sender, EventArgs e)
         {
 
         }

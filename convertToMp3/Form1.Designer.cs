@@ -34,9 +34,10 @@
             this.directoryButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
             this.playlistButton = new System.Windows.Forms.Button();
-            this.Directory = new convertToMp3.Directory();
-            this.Converter = new convertToMp3.Converter();
             this.Info = new System.Windows.Forms.Label();
+            this.Converter = new convertToMp3.Converter();
+            this.Directory = new convertToMp3.Directory();
+            this.playlistConverter1 = new convertToMp3.PlaylistConverter();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,22 +99,6 @@
             this.playlistButton.UseVisualStyleBackColor = false;
             this.playlistButton.Click += new System.EventHandler(this.PlaylistButton_Click);
             // 
-            // Directory
-            // 
-            this.Directory.Location = new System.Drawing.Point(415, 389);
-            this.Directory.Name = "Directory";
-            this.Directory.Size = new System.Drawing.Size(2172, 1194);
-            this.Directory.TabIndex = 3;
-            // 
-            // Converter
-            // 
-            this.Converter.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Converter.Location = new System.Drawing.Point(396, 389);
-            this.Converter.Name = "Converter";
-            this.Converter.Size = new System.Drawing.Size(2170, 1230);
-            this.Converter.TabIndex = 2;
-            this.Converter.Load += new System.EventHandler(this.Converter_Load);
-            // 
             // Info
             // 
             this.Info.AutoSize = true;
@@ -124,6 +109,30 @@
             this.Info.TabIndex = 4;
             this.Info.Text = resources.GetString("Info.Text");
             // 
+            // Converter
+            // 
+            this.Converter.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Converter.Location = new System.Drawing.Point(405, 419);
+            this.Converter.Name = "Converter";
+            this.Converter.Size = new System.Drawing.Size(2170, 1230);
+            this.Converter.TabIndex = 2;
+            this.Converter.Load += new System.EventHandler(this.Converter_Load);
+            // 
+            // Directory
+            // 
+            this.Directory.Location = new System.Drawing.Point(415, 389);
+            this.Directory.Name = "Directory";
+            this.Directory.Size = new System.Drawing.Size(2172, 1194);
+            this.Directory.TabIndex = 3;
+            // 
+            // playlistConverter1
+            // 
+            this.playlistConverter1.Location = new System.Drawing.Point(405, 409);
+            this.playlistConverter1.Name = "playlistConverter1";
+            this.playlistConverter1.Size = new System.Drawing.Size(2140, 1240);
+            this.playlistConverter1.TabIndex = 5;
+            this.playlistConverter1.Load += new System.EventHandler(this.playlistConverter1_Load);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -131,10 +140,11 @@
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(2124, 1265);
             this.Controls.Add(this.Info);
-            this.Controls.Add(this.Converter);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.Converter);
             this.Controls.Add(this.Directory);
+            this.Controls.Add(this.playlistConverter1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -154,6 +164,7 @@
         private Converter Converter;
         private Directory Directory;
         private System.Windows.Forms.Label Info;
+        private PlaylistConverter playlistConverter1;
     }
 }
 

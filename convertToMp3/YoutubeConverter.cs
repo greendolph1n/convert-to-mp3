@@ -19,9 +19,7 @@ namespace convertToMp3
 
         public void convertURL(string link, string dir)
         {
-            {
-
-                Converter conv = new Converter();
+            { 
              
                 string source = dir;
                 var youtube = YouTube.Default;

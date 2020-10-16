@@ -57,6 +57,8 @@ namespace convertToMp3
                 string dir = textBox1.Text;
                 Converter conv = new Converter();
                 conv.getDir(dir);
+                PlaylistConverter pconv = new PlaylistConverter();
+                pconv.getDir(dir);
                 check = true;
             }
         }
