@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-
 using System.Windows.Forms;
 using System.Net.Http;
 using VideoLibrary;
@@ -35,7 +34,8 @@ namespace convertToMp3
             
             backgroundWorker1.RunWorkerAsync();
             ConvertTimer.Start();
-            ConvertProgressBar.Value = 1;
+            ConvertProgressBar.Value = 10;
+            status = 0;
             
 
 
@@ -122,7 +122,7 @@ namespace convertToMp3
                     return name;
                 }
 
-                catch (InvalidOperationException e)
+                catch (InvalidOperationException)
                 {
                     Console.WriteLine("Failed to retrieve video for main thread! trying again...");
                     continue;

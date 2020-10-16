@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoLibrary;
 
@@ -43,9 +37,8 @@ namespace convertToMp3
                 valid = true;
                 songName = getYoutubeName(url);
                 backgroundWorker1.RunWorkerAsync();
-                status = 1;
                 ConvertTimer.Start();
-                ConvertProgressBar.Value = 0;
+                ConvertProgressBar.Value = 15;
             }
             else
             {
@@ -82,7 +75,7 @@ namespace convertToMp3
                     return name;
                 }
 
-                catch (InvalidOperationException e)
+                catch (InvalidOperationException)
                 {
                     Console.WriteLine("Failed to retrieve video for main thread! trying again...");
                     continue;
@@ -129,10 +122,17 @@ namespace convertToMp3
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-           //MessageBox.Show("Success");
-            ConvertProgressBar.Value = 100;
-            
-            status = 0;
+            if (valid)
+            {
+                ConvertProgressBar.Value = 100;
+                //  DownloadedSong.Text = "Completed downloading all songs";
+                status = 0;
+                MessageBox.Show("The playlist has finished downloading");
+            }
+            else
+            {
+
+            }
         }
 
         private void DownloadedSong_Click(object sender, EventArgs e)

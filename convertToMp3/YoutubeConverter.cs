@@ -46,7 +46,7 @@ namespace convertToMp3
                         break;
                     }
 
-                    catch  (InvalidOperationException e){
+                    catch  (InvalidOperationException){
                         Console.WriteLine("Failed to retrieve video! trying again...");
                         System.Threading.Thread.Sleep(5000);
                         continue;
