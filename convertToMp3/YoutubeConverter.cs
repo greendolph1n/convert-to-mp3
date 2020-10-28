@@ -23,6 +23,7 @@ namespace convertToMp3
                 while (true) {
                     try
                     {
+                        Console.WriteLine("attempting to download...");
                         var vid = youtube.GetVideo(link);
                         string videopath = Path.Combine(source, vid.FullName);
                         string name = vid.FullName;
@@ -47,8 +48,13 @@ namespace convertToMp3
                     }
 
                     catch  (InvalidOperationException){
-                        Console.WriteLine("Failed to retrieve video! trying again...");
+                        Console.WriteLine("Failed to retrieve video (invalid operation)! trying again...");
                         System.Threading.Thread.Sleep(5000);
+                        continue;
+                    }
+                    catch (ArgumentNullException)
+                    {
+                        Console.WriteLine("Failed to retrieve video for main thread (null exception)! trying again...");
                         continue;
                     }
                 }

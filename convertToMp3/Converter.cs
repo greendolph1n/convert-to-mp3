@@ -30,23 +30,26 @@ namespace convertToMp3
 
         private void ConvertButton_Click(object sender, EventArgs e)
         {
-
-            url = URLbox.Text;
-            if (url.Contains("youtube"))
+            if (!valid)
             {
-                valid = true;
-                songName = getYoutubeName(url);
-                backgroundWorker1.RunWorkerAsync();
-                ConvertTimer.Start();
-                ConvertProgressBar.Value = 15;
-            }
-            else
-            {
-                valid = false;
-                MessageBox.Show("Please enter a valid URL","Error");
-            }
+                url = URLbox.Text;
+                if (url.Contains("youtube"))
+                {
+                    valid = true;
+                    songName = getYoutubeName(url);
+                    backgroundWorker1.RunWorkerAsync();
+                    ConvertTimer.Start();
+                    ConvertProgressBar.Value = 15;
+                }
 
-           
+                else
+                {
+                    valid = false;
+                    MessageBox.Show("Please enter a valid URL", "Error");
+                }
+
+
+            }
         }
 
         private void ConvertTimer_Tick(object sender, EventArgs e)
@@ -76,6 +79,11 @@ namespace convertToMp3
                 }
 
                 catch (InvalidOperationException)
+                {
+                    Console.WriteLine("Failed to retrieve video for main thread! trying again...");
+                    continue;
+                }
+                catch (ArgumentNullException)
                 {
                     Console.WriteLine("Failed to retrieve video for main thread! trying again...");
                     continue;
@@ -127,7 +135,8 @@ namespace convertToMp3
                 ConvertProgressBar.Value = 100;
                 //  DownloadedSong.Text = "Completed downloading all songs";
                 status = 0;
-                MessageBox.Show("The playlist has finished downloading");
+                valid = false;
+             //   MessageBox.Show("The playlist has finished downloading");
             }
             else
             {

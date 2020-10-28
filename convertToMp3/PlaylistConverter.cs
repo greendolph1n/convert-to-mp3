@@ -31,13 +31,14 @@ namespace convertToMp3
 
         private void ConvertButton_Click(object sender, EventArgs e)
         {
-            
-            backgroundWorker1.RunWorkerAsync();
-            ConvertTimer.Start();
-            ConvertProgressBar.Value = 10;
-            status = 0;
-            
+            if (!valid)
+            {
+                backgroundWorker1.RunWorkerAsync();
+                ConvertTimer.Start();
+                ConvertProgressBar.Value = 10;
+                status = 0;
 
+            }
 
         }
 
@@ -87,7 +88,8 @@ namespace convertToMp3
                 ConvertProgressBar.Value = 100;
                 //  DownloadedSong.Text = "Completed downloading all songs";
                 status = 0;
-                MessageBox.Show("The playlist has finished downloading");
+                MessageBox.Show("The playlist has finished downloading", "Task Completed");
+                valid = false;
             }
             else
             {
@@ -123,6 +125,11 @@ namespace convertToMp3
                 }
 
                 catch (InvalidOperationException)
+                {
+                    Console.WriteLine("Failed to retrieve video for main thread! trying again...");
+                    continue;
+                }
+                catch (ArgumentNullException)
                 {
                     Console.WriteLine("Failed to retrieve video for main thread! trying again...");
                     continue;
