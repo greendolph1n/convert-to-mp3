@@ -16,7 +16,7 @@ namespace convertToMp3
         public PlaylistConverter()
         {
             InitializeComponent();
-            
+
         }
 
         private void PlaylistInput_TextChanged(object sender, EventArgs e)
@@ -50,25 +50,39 @@ namespace convertToMp3
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             playlistURL = PlaylistInput.Text;
-            if (playlistURL.Contains("youtube") && playlistURL.Contains("list="))
+            if (playlistURL.Contains("youtube"))
             {
                 valid = true;
-                string[] youtubeURLs = ExtractLinkPlaylist(playlistURL);
-                for (int i = 0; i < youtubeURLs.Length; i++)
-                {
 
+                if (playlistURL.Contains("list="))
+                    //link is playlist
+                {
+                    string[] youtubeURLs = ExtractLinkPlaylist(playlistURL);
+                    for (int i = 0; i < youtubeURLs.Length; i++)
+                    {
+
+                        status = 1;
+                        YoutubeConverter yc = new YoutubeConverter();
+                        yc.convertURL(youtubeURLs[i], directory);
+                        songName = getYoutubeName(youtubeURLs[i]);
+                        backgroundWorker1.ReportProgress(0);
+                    }
+                }
+                else
+                {
+                    //link is a single video
                     status = 1;
                     YoutubeConverter yc = new YoutubeConverter();
-                    yc.convertURL(youtubeURLs[i], directory);
-                    songName = getYoutubeName(youtubeURLs[i]);
+                    yc.convertURL(playlistURL, directory);
+                    songName = getYoutubeName(playlistURL);
                     backgroundWorker1.ReportProgress(0);
 
-
                 }
+
             }
             else
             {
-                MessageBox.Show("Please enter a valid playlist URL","Error");
+                MessageBox.Show("Please enter a valid playlist URL", "Error");
                 valid = false;
             }
         }
@@ -76,8 +90,8 @@ namespace convertToMp3
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             status = 100;
-         
-            DownloadedSong.Text = ("Successfully downloaded:"+"\n\n- " +songName );
+
+            DownloadedSong.Text = ("Successfully downloaded:" + "\n\n- " + songName);
             ConvertProgressBar.Value = 0;
         }
 
@@ -188,14 +202,14 @@ namespace convertToMp3
                     total = index2 + 1;
                     if (total > pageSourceStr.Length)
                     {
-                       /// Console.WriteLine("total is too big");
+                        /// Console.WriteLine("total is too big");
                         break;
                     }
                 }
                 String[] str = list.ToArray();
 
-               // Console.WriteLine("LENGTH OF LIST IS " + str.Length);
-              
+                // Console.WriteLine("LENGTH OF LIST IS " + str.Length);
+
                 return str;
             }
             return null;
