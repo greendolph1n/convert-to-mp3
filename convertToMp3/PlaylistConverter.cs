@@ -179,16 +179,17 @@ namespace convertToMp3
                 //"▶" can be seen as a "flag", only one instance of this character exists in the entire page source, so this is a handy reference point
                 int begin = pageSourceStr.IndexOf("▶");
                 int end = begin;
-                int stop = pageSourceStr.IndexOf(",\"watchPlaylistEndpoint\"");
                 List<string> list = new List<string>();
                 while (begin > -1)
                 {
-                    begin = pageSourceStr.IndexOf(@"""url"":""/watch?v=", end); //this string only appears before the youtube URL
-                                                                                  //  Console.WriteLine("index 1 found it is " + index);
-                    end = pageSourceStr.IndexOf(@"index=", begin);//this string only appears after the youtube URL
-                                                                     // Console.WriteLine("index 2 found it is " + index2);
+                    //this string only appears before the youtube URL
+                    begin = pageSourceStr.IndexOf(@"""url"":""/watch?v=", end);
+                    //this string only appears after the youtube URL
+                    end = pageSourceStr.IndexOf(@"index=", begin);
 
-                    int difference = end-begin; //difference between the index reference points is the length of the youtube URL
+                    //difference between the index reference points is the length of the youtube URL
+                    int difference = end-begin; 
+
                     //Console.WriteLine("begin is " + begin + " end is " + end);
                     string stringURL = "www.youtube.com" + pageSourceStr.Substring(begin+7,difference);
 
@@ -197,6 +198,7 @@ namespace convertToMp3
                     //find breakpoint
                     int breakpoint = pageSourceStr.IndexOf("pp=", end);
                     String breakCode = pageSourceStr.Substring(breakpoint+3, 4);
+
                     //Console.WriteLine("break code is "+ breakCode);
                     if (!breakCode.Contains("iAQ")){
                         //reached end of playlist
