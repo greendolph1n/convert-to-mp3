@@ -54,6 +54,7 @@ namespace convertToMp3
 
             else
             {
+                ConfirmButton.BackColor = Color.LightGreen;
                 string dir = textBox1.Text;
                 Converter conv = new Converter();
                 conv.getDir(dir);

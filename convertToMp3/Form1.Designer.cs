@@ -83,7 +83,7 @@
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(272, 165);
             this.startButton.TabIndex = 0;
-            this.startButton.Text = "Start";
+            this.startButton.Text = "Convert a video";
             this.startButton.UseVisualStyleBackColor = false;
             this.startButton.Click += new System.EventHandler(this.StartButton_Click);
             // 

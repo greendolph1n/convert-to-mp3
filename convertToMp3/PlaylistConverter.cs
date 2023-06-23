@@ -12,7 +12,7 @@ namespace convertToMp3
     {
         static string directory, playlistURL, songName;
         static int status;
-        static bool valid;
+        static bool valid, playlist;
         public PlaylistConverter()
         {
             InitializeComponent();
@@ -35,7 +35,7 @@ namespace convertToMp3
             {
                 backgroundWorker1.RunWorkerAsync();
                 ConvertTimer.Start();
-                ConvertProgressBar.Value = 10;
+                ConvertProgressBar.Value = 0;
                 status = 0;
 
             }
@@ -43,8 +43,11 @@ namespace convertToMp3
         }
 
         private void ConvertTimer_Tick(object sender, EventArgs e)
-        {
-            ConvertProgressBar.Increment(status);
+        {   
+            if(ConvertProgressBar.Value < 95) {
+                ConvertProgressBar.Increment(status);
+
+            }
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -54,9 +57,10 @@ namespace convertToMp3
             {
                 valid = true;
 
-                if (playlistURL.Contains("list="))
+                if (playlistURL.Contains("list=")) {
                     //link is playlist
-                {
+                    playlist = true;
+                
                     string[] youtubeURLs = ExtractLinkPlaylist(playlistURL);
                     for (int i = 0; i < youtubeURLs.Length; i++)
                     {
@@ -97,17 +101,13 @@ namespace convertToMp3
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (valid)
-            {
-                ConvertProgressBar.Value = 100;
-                //  DownloadedSong.Text = "Completed downloading all songs";
-                status = 0;
-                MessageBox.Show("The playlist has finished downloading", "Task Completed");
-                valid = false;
-            }
-            else
-            {
+            ConvertProgressBar.Value = 100;
+            status = 0;
+            valid = false;
 
+            if (valid && playlist)
+            {
+                MessageBox.Show("The playlist has finished downloading", "Task Completed");
             }
         }
 
@@ -177,34 +177,36 @@ namespace convertToMp3
 
 
                 //"▶" can be seen as a "flag", only one instance of this character exists in the entire page source, so this is a handy reference point
-                int index = pageSourceStr.IndexOf("▶"), index2 = index;
-                int total = index;
+                int begin = pageSourceStr.IndexOf("▶");
+                int end = begin;
+                int stop = pageSourceStr.IndexOf(",\"watchPlaylistEndpoint\"");
                 List<string> list = new List<string>();
-                while (index > -1)
+                while (begin > -1)
                 {
-                    index = pageSourceStr.IndexOf(@"""url"":""/watch?v=", total); //this string only appears before the youtube URL
+                    begin = pageSourceStr.IndexOf(@"""url"":""/watch?v=", end); //this string only appears before the youtube URL
                                                                                   //  Console.WriteLine("index 1 found it is " + index);
-                    index2 = pageSourceStr.IndexOf(@"index=", total);//this string only appears after the youtube URL
+                    end = pageSourceStr.IndexOf(@"index=", begin);//this string only appears after the youtube URL
                                                                      // Console.WriteLine("index 2 found it is " + index2);
 
-                    int difference = index2 - index; //difference between the index reference points is the length of the youtube URL
-                    string stringURL = "www.youtube.com" + pageSourceStr.Substring(index + 7, difference - 58);
+                    int difference = end-begin; //difference between the index reference points is the length of the youtube URL
+                    //Console.WriteLine("begin is " + begin + " end is " + end);
+                    string stringURL = "www.youtube.com" + pageSourceStr.Substring(begin+7,difference);
 
-                    Console.WriteLine("string is " + stringURL + " string length is " + stringURL.Length);
-                    if (stringURL.Length > 35) //string URL will only ever be 83 characters long
-                    {
-                        Console.WriteLine("Finished Extracting");
+                    //Console.WriteLine("string is " + stringURL + " string length is " + stringURL.Length);
+
+                    //find breakpoint
+                    int breakpoint = pageSourceStr.IndexOf("pp=", end);
+                    String breakCode = pageSourceStr.Substring(breakpoint+3, 4);
+                    //Console.WriteLine("break code is "+ breakCode);
+                    if (!breakCode.Contains("iAQ")){
+                        //reached end of playlist
                         break;
                     }
+       
 
                     list.Add(stringURL);
-                    Console.WriteLine("list length is +" + list.Count);
-                    total = index2 + 1;
-                    if (total > pageSourceStr.Length)
-                    {
-                        /// Console.WriteLine("total is too big");
-                        break;
-                    }
+                    //Console.WriteLine("list length is +" + list.Count);
+                    begin = end;
                 }
                 String[] str = list.ToArray();
 
