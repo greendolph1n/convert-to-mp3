@@ -44,7 +44,7 @@ namespace convertToMp3
 
         private void ConvertTimer_Tick(object sender, EventArgs e)
         {   
-            if(ConvertProgressBar.Value < 95) {
+            if(ConvertProgressBar.Value < 90) {
                 ConvertProgressBar.Increment(status);
 
             }
@@ -65,17 +65,44 @@ namespace convertToMp3
                     for (int i = 0; i < youtubeURLs.Length; i++)
                     {
 
+                        ConvertProgressBar.Invoke((MethodInvoker)delegate
+                        {
+                            ConvertProgressBar.Value = 0;
+                        });
+                        songName = getYoutubeName(youtubeURLs[i]);
+                        DownloadedSong.Invoke((MethodInvoker)delegate
+                        {
+                            DownloadedSong.Text = "Downloading " + songName + "...";
+                        });
+
                         status = 1;
                         YoutubeConverter yc = new YoutubeConverter();
                         yc.convertURL(youtubeURLs[i], directory);
-                        songName = getYoutubeName(youtubeURLs[i]);
-                        backgroundWorker1.ReportProgress(0);
+                        // backgroundWorker1.ReportProgress(0);
+
+                        ConvertProgressBar.Invoke((MethodInvoker)delegate
+                        {
+                            ConvertProgressBar.Value = 100;
+                        });
+                        System.Threading.Thread.Sleep(1000);
+
                     }
                 }
                 else
                 {
                     //link is a single video
                     status = 1;
+
+                    ConvertProgressBar.Invoke((MethodInvoker)delegate
+                    {
+                        ConvertProgressBar.Value = 0;
+                    });
+                    songName = getYoutubeName(playlistURL);
+                    DownloadedSong.Invoke((MethodInvoker)delegate
+                    {
+                        DownloadedSong.Text = "Downloading " + songName + "...";
+                    });
+
                     YoutubeConverter yc = new YoutubeConverter();
                     yc.convertURL(playlistURL, directory);
                     songName = getYoutubeName(playlistURL);
@@ -94,9 +121,7 @@ namespace convertToMp3
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             status = 100;
-
-            DownloadedSong.Text = ("Successfully downloaded:" + "\n\n- " + songName);
-            ConvertProgressBar.Value = 0;
+            ConvertProgressBar.Value = 100;
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

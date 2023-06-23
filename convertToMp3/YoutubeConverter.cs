@@ -52,6 +52,11 @@ namespace convertToMp3
                         System.Threading.Thread.Sleep(5000);
                         continue;
                     }
+                    catch (System.Net.Http.HttpRequestException) { 
+                    Console.WriteLine("Failed to retrieve video (http forbidden access)! trying again...");
+                    System.Threading.Thread.Sleep(5000);
+                    continue;
+                    }
                     catch (ArgumentNullException)
                     {
                         Console.WriteLine("Failed to retrieve video for main thread (null exception)! trying again...");
